@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="{% static 'core/images/favico.ico' %}">
+    <title>Heart Care | HOME</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="{% static 'website/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/demo.css' %}"/>
+    <link rel="stylesheet" href="{% static 'website/css/templatemo-style.css' %}">
+    <script type="text/javascript" src="{% static 'website/js/modernizr.custom.86080.js' %}"></script>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+<ul class="cb-slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row justify-content-center text-center">
+        <div class="col-sm-6 mt-5">
+            <iframe src="https://embed.lottiefiles.com/animation/80501" class="border-0"></iframe>
+            <header class=""><h1><b class="text-danger">HEART</b> Care</h1></header>
+            <P class="my-2 small">
+                {% lorem 1 p %}
+            </P>
+
+            <div class="tm-social-icons-container text-xs-center mt-4">
+                <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+            <div>
+                <p class="small">Copyright © 2021 | Developed by
+                    <b>
+                        <a href="/admin/" class="text-danger">Zohaib</a>
+                    </b>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="{% static 'website/js/particles.js' %}"></script>
+<script type="text/javascript" src="{% static 'website/js/app.js' %}"></script>
+</html>
