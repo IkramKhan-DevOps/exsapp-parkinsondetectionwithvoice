@@ -201,5 +201,5 @@ admin.site.register(User, CustomerUserAdmin)
 
 
 admin.site.site_header = "Root Access"
-admin.site.site_title = "HeartCare"
+admin.site.site_title = "Parkinson"
 admin.site.index_title = "Dashboard"
