@@ -10,6 +10,9 @@ from .serializers import (
     UserPasswordChangeSerializer, UserSerializer,
     PredicationSerializer
 )
+from core import settings
+import random
+import pickle
 
 """ AUTH USER API' S """
 
@@ -71,10 +74,37 @@ class PredicationViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = PredicationSerializer(data=request.data)
 
+        print('Creating prediction')
+
         if serializer.is_valid():
             prediction = serializer.save()
             prediction.user = request.user
-            prediction.save()
 
-            return Response(data={'message': 'Predication created successfully'}, status=HTTP_201_CREATED)
+            filename = f'{settings.BASE_DIR}\\modelForPrediction.sav'
+            message = 0
+            try:
+                print(filename)
+                loaded_model = pickle.load(open(filename, 'rb'))  # loading the model file from the storage
+                # predictions using the loaded model file
+                scaler = pickle.load(open(f'{settings.BASE_DIR}\\standardScalar.sav', 'rb'))
+                prediction = loaded_model.predict(
+                    scaler.transform([[random.randint(0, 9), random.randint(0, 9), random.randint(0, 9),
+                                       random.randint(0, 9), random.randint(0, 9),
+                                       random.randint(0, 9), random.randint(0, 9), random.randint(0, 9),
+                                       random.randint(0, 9),
+                                       random.randint(0, 9), random.randint(0, 9), random.randint(0, 9),
+                                       random.randint(0, 9),
+                                       random.randint(0, 9), random.randint(0, 9), random.randint(0, 9),
+                                       random.randint(0, 9),
+                                       random.randint(0, 9), random.randint(0, 9), random.randint(0, 9),
+                                       random.randint(0, 9),
+                                       random.randint(0, 9)]]))
+                message = prediction
+            except:
+                message = 0
+
+            prediction.status = message
+            prediction = prediction.save()
+            return Response(data={'message': f'Predication created, Status = {prediction}'},
+                            status=HTTP_201_CREATED)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
